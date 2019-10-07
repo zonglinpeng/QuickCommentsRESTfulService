@@ -22,8 +22,8 @@ app.secret_key = os.urandom(20)
 
 
 '''HELPER'''
-def get_comment_prediction(answer, plog_ID):
-    comment_prob = predict_comment(answer, plog_ID)
+def get_comment_prediction(answer, num_comments, plog_ID):
+    comment_prob = predict_comment(answer, num_comments, plog_ID)
     return comment_prob
 
 
@@ -37,13 +37,13 @@ def commnent_me():
         response_dict = {}
         plog_ID = json["plog_ID"]
         answer_text = json["answer_text"]
-        answer_number = json["num_comments"]
+        num_comments = json["num_comments"]
         # answer_text = Markup(answer_text).striptags()
         if not answer_text:
             print("NOTE: No answers are passed in")
         session["answer"] = answer_text
         # get comments
-        comment_prob = get_comment_prediction(answer_text, plog_ID)
+        comment_prob = get_comment_prediction(answer_text, num_comments, plog_ID)
         # parse data
         response_dict["plog_id"] = plog_ID
         response_dict["comments"] = comment_prob

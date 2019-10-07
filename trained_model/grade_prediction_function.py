@@ -19,8 +19,11 @@ def predict_grade(student_answer):
 # predict_grade()
 # prediction
 
-def predict_comment(student_answer, plog_id="0"):
+def predict_comment(student_answer, num_comments, plog_id=0):
     #TODO: do with student_answer
-    comments = [plog_id + ": Good work!", "Well done.", "You need more work."]
+    comments = []
+    for _ in range(num_comments):
+        #TODO implement the baseline model
+        comments.expend([str(plog_id) + ": Good work!"])
     return comments
 
