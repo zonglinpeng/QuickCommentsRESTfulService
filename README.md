@@ -1,22 +1,22 @@
 # QUICK Comments RESTful APIs
 
-# Instructions
-### run by: ./app.py
+### Instructions
+run by: ./app.py
 
-# HTTP Request
+### HTTP Request
 http://127.0.0.1:5000/comment/
 
-# Install
+### Install
 - flask
 - psycopg2
 - nltk
 
-# Description
+### Description
 - app.py: where Flask APIs are stored. /comment/ query is used to get requests.
 - trained_model/grade_prediction_function.py: where grades and/or comments are generated
 
-# Jsons
-##  -- Request -- 
+### Jsons
+#####  -- Request -- 
 ```
 [
     {
@@ -33,9 +33,8 @@ http://127.0.0.1:5000/comment/
     }
 ]
 ```
-##  -- Response -- 
+#####  -- Response -- 
 ```
-
 [
    {
        "plog_id": 0,
