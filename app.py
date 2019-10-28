@@ -31,7 +31,9 @@ def get_comment_prediction(answer, num_comments, plog_ID):
 @app.route("/comment/", methods=['POST'])
 def commnent_me():
     response_list = []
-    req = request.get_json()
+    raw_req = request.get_json()
+    # print(raw_req) # DEBUG
+    req = json.loads(raw_req) if(type(raw_req) == str) else raw_req
     # parse req
     for json in req:
         response_dict = {}
@@ -41,7 +43,7 @@ def commnent_me():
         # answer_text = Markup(answer_text).striptags()
         if not answer_text:
             print("NOTE: No answers are passed in")
-        session["answer"] = answer_text
+        session["answer"] = answer_text.strip('<p>').strip('</p>') # remove paragraph tags
         # get comments
         comment_prob = get_comment_prediction(answer_text, num_comments, plog_ID)
         # parse data
