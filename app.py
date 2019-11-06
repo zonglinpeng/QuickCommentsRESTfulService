@@ -5,7 +5,7 @@ and the number of comments
 """
 import os
 import numpy as np
-import json
+import json as js
 from flask import Flask, request, render_template, jsonify, session, Markup
 from trained_model.grade_prediction_function import predict_grade, predict_comment
 
@@ -31,9 +31,10 @@ def get_comment_prediction(answer, num_comments, plog_ID):
 @app.route("/comment/", methods=['POST'])
 def commnent_me():
     response_list = []
-    raw_req = request.get_json()
+    raw_req = request.get_data().decode("utf-8") # get JSON as string and decode
     # print(raw_req) # DEBUG
-    req = json.loads(raw_req) if(type(raw_req) == str) else raw_req
+    # print(type(raw_req)) # DEBUG
+    req = js.loads(raw_req) if(type(raw_req) == str) else raw_req
     # parse req
     for json in req:
         response_dict = {}
@@ -51,7 +52,7 @@ def commnent_me():
         response_dict["comments"] = comment_prob
         response_list.extend([response_dict])
     # parse into JSON
-    session["comments"] = json.dumps(response_list)
+    session["comments"] = js.dumps(response_list)
     print(session["comments"])
     return session["comments"]
 

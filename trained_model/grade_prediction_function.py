@@ -24,6 +24,6 @@ def predict_comment(student_answer, num_comments, plog_id=0):
     comments = []
     for _ in range(num_comments):
         #TODO implement the baseline model
-        comments.expend([str(plog_id) + ": Good work!"])
+        comments.extend([str(plog_id) + ": Good work!"])
     return comments
 
