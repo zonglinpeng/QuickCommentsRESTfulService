@@ -39,6 +39,7 @@ def commnent_me():
     for json in req:
         response_dict = {}
         plog_ID = json["plog_ID"]
+        user_ID = json["user_ID"]
         answer_text = json["answer_text"]
         num_comments = json["num_comments"]
         # answer_text = Markup(answer_text).striptags()
@@ -48,7 +49,7 @@ def commnent_me():
         # get comments
         comment_prob = get_comment_prediction(answer_text, num_comments, plog_ID)
         # parse data
-        response_dict["plog_id"] = plog_ID
+        response_dict["user_ID"] = user_ID
         response_dict["comments"] = comment_prob
         response_list.extend([response_dict])
     # parse into JSON
