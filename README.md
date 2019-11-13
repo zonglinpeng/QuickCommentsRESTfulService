@@ -21,15 +21,17 @@ http://127.0.0.1:5000/comment/
 [
     {
         "user_ID": 111,
-        "plog_ID": 0,
+        "problem_ID": 0,
+        "teacher_ID": 0,
         "answer_text": "answer1",
-        "num_comments": 1
+        "num_comments": 3
     },
     {
         "user_ID": 111,
-        "plog_ID": 1,
+        "problem_ID": 0,
+        "teacher_ID": 0,
         "answer_text": "answer2",
-        "num_comments": 1
+        "num_comments": 3
     }
 ]
 ```
@@ -37,7 +39,7 @@ http://127.0.0.1:5000/comment/
 ```
 [
    {
-       "plog_id": 0,
+       "problem_ID": 0,
        "comments": [
            "comments1",
            "comments2",
@@ -45,7 +47,7 @@ http://127.0.0.1:5000/comment/
        ]
    },
    {
-       "plog_id": 1,
+       "problem_ID": 1,
        "comments": [
            "comments1",
            "comments2",
