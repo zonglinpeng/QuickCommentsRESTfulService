@@ -10,7 +10,7 @@ from flask import Flask, request, render_template, jsonify, session, Markup
 from trained_model.grade_prediction_function import predict_grade, predict_comment
 
 __author__ = "Zonglin Peng, Rui Huang, and Meghana K V"
-__copyright__ = "Copyright 2019, The ASSISments Project"
+__copyright__ = "Copyright 2019, The ASSISTments Project"
 __license__ = "GPL"
 __version__ = "1.0.1"
 __status__ = "Production"
@@ -22,8 +22,8 @@ app.secret_key = os.urandom(20)
 
 
 '''HELPER'''
-def get_comment_prediction(answer, num_comments, plog_ID):
-    comment_prob = predict_comment(answer, num_comments, plog_ID)
+def get_comment_prediction(answer, num_comments, problem_ID, techer_ID):
+    comment_prob = predict_comment(answer, num_comments, problem_ID, techer_ID)
     return comment_prob
 
 
@@ -38,7 +38,8 @@ def commnent_me():
     # parse req
     for json in req:
         response_dict = {}
-        plog_ID = json["plog_ID"]
+        problem_ID = json["problem_ID"] # not plog_ID
+        techer_ID = json["teacher_ID"] 
         user_ID = json["user_ID"]
         answer_text = json["answer_text"]
         num_comments = json["num_comments"]
@@ -47,7 +48,7 @@ def commnent_me():
             print("NOTE: No answers are passed in")
         session["answer"] = answer_text.strip('<p>').strip('</p>') # remove paragraph tags
         # get comments
-        comment_prob = get_comment_prediction(answer_text, num_comments, plog_ID)
+        comment_prob = get_comment_prediction(answer_text, num_comments, problem_ID, techer_ID)
         # parse data
         response_dict["user_ID"] = user_ID
         response_dict["comments"] = comment_prob
