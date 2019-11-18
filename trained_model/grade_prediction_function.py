@@ -24,7 +24,10 @@ def predict_grade(student_answer):
 def predict_comment(student_answer, num_comments, problem_ID, teacher_ID):
     # do with student_answer
     grade_prob = predict_grade([student_answer])
-    grade = np.where(grade_prob == 1.0)[0][0] + 1
+    try:
+        grade = np.where(grade_prob == 1.0)[0][0] + 1
+    except:
+        grade = 1 # "I dont know.."
     print("PREDICTED GRADE: " + str(grade)) # DEBUG
     # baseline model based on grades
     comments = get_comment_by_grade(grade, num_comments)
