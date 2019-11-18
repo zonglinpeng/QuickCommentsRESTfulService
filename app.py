@@ -22,13 +22,8 @@ app.secret_key = os.urandom(20)
 
 
 '''HELPER'''
-<<<<<<< HEAD
-def get_comment_prediction(answer, num_comments, problem_ID, techer_ID):
-    comment_prob = predict_comment(answer, num_comments, problem_ID, techer_ID)
-=======
-def get_comment_prediction(answer, num_comments, problem_ID):
-    comment_prob = predict_comment(answer, num_comments, problem_ID)
->>>>>>> 737e3eb18ac257973e1fca9f88b56c4a5df05fcc
+def get_comment_prediction(answer, num_comments, problem_ID, teacher_ID):
+    comment_prob = predict_comment(answer, num_comments, problem_ID, teacher_ID)
     return comment_prob
 
 
@@ -43,13 +38,8 @@ def commnent_me():
     # parse req
     for json in req:
         response_dict = {}
-<<<<<<< HEAD
         problem_ID = json["problem_ID"] # not plog_ID
-        techer_ID = json["teacher_ID"] 
-=======
-        problem_ID = json["problem_ID"]
-        teacher_ID = json["teacher_ID"]
->>>>>>> 737e3eb18ac257973e1fca9f88b56c4a5df05fcc
+        teacher_ID = json["teacher_ID"] 
         user_ID = json["user_ID"]
         answer_text = json["answer_text"]
         num_comments = json["num_comments"]
@@ -58,11 +48,7 @@ def commnent_me():
             print("NOTE: No answers are passed in")
         session["answer"] = answer_text.strip('<p>').strip('</p>') # remove paragraph tags
         # get comments
-<<<<<<< HEAD
-        comment_prob = get_comment_prediction(answer_text, num_comments, problem_ID, techer_ID)
-=======
-        comment_prob = get_comment_prediction(answer_text, num_comments, problem_ID)
->>>>>>> 737e3eb18ac257973e1fca9f88b56c4a5df05fcc
+        comment_prob = get_comment_prediction(answer_text, num_comments, problem_ID, teacher_ID)
         # parse data
         response_dict["user_ID"] = user_ID
         response_dict["comments"] = comment_prob

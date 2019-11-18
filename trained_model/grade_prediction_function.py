@@ -36,16 +36,15 @@ def predict_comment(student_answer, num_comments, problem_ID, teacher_ID):
 def get_comment_by_grade(grade, num_comments):
     # TODO: populate comment lib
     sample = {
-        0:["c0-0", "c0-1", "c0-2", "c0-3"],
-        1:["c1-0", "c1-1", "c1-2", "c1-3"],
-        2:["c2-0", "c2-1", "c2-2", "c2-3"],
-        3:["b3-0", "b3-1", "b3-2", "b3-3"],
-        4:["b4-0", "b4-1", "b4-2", "b4-3"],
-        5:["a5-0", "a5-1", "a5-2", "a5-3"]
+        1:["Your answer is not correct.", "Incorrect answer.", "Please focus more on details.", "Wrong answer.", "Your should work harder.", "I can help you."],
+        2:["Your answer is partially correct.", "There is a more correct solution.","Partially incorrect answer.","Please focus more on details.", "You anwser is not necessarily correct.", "I can help you if you could provide some useful feedback please."],
+        3:["Your answer is partially incorrect.", "You got 50 percent correct.", "You are half way through.", "You can improve on you answer.", "Partially incorrect answer.", "I can help you if you could provide some useful feedback please."],
+        4:["Your answer is almost correct.", "Think more about details.", "You almost got there.", "Nice work, but some details are incorrect.", "Think more about the question.", "Minor issues are in your solution."],
+        5:["Good work.", "Correct.", "Your answer is correct.", "Good solution.", "Good job.", "Nice work."]
     }
     comments_set = sample[grade]
     comments = []
     for i in range(num_comments): 
-        comments.append(comments_set[random.randint(0,3)])
+        comments.append(comments_set[random.randint(0,5)])
     print("PREDICTED COMMENTS:" + ' '.join(map(str,comments))) # DEBUG
     return comments
