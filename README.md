@@ -39,7 +39,7 @@ http://127.0.0.1:5000/comment/
 ```
 [
    {
-       "problem_ID": 0,
+       "user_ID": 0,
        "comments": [
            "comments1",
            "comments2",
@@ -47,7 +47,7 @@ http://127.0.0.1:5000/comment/
        ]
    },
    {
-       "problem_ID": 1,
+       "user_ID": 1,
        "comments": [
            "comments1",
            "comments2",
